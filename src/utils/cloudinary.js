@@ -1,4 +1,4 @@
-import {v2 as cloudinary} from cloudinary;
+import {v2 as cloudinary} from "cloudinary";
 import fs from "fs";
 
 cloudinary.config({
@@ -22,7 +22,7 @@ const uploadOnCloudinary = async (localFilePath) => {
     return response;
 
 } catch (error) {
-    fs,unlinkSync(localFilePath);// remove the file from the server,as the upload operation failed
+    fs.unlinkSync(localFilePath);// remove the file from the server,as the upload operation failed
     return null;
   }
 }
