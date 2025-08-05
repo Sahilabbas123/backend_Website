@@ -1,5 +1,6 @@
 import mongoose , { Schema } from "mongoose";
-import jsonwebtoken from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+
 import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
@@ -47,6 +48,7 @@ const userSchema = new Schema(
             type: String,
             required: [true, "Password is required"],
             
+            
           },
 
         refreshToken: {
@@ -79,7 +81,8 @@ userSchema.methods.generateAccessToken = function(){
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: ACCESS_TOKEN_EXPIRY,
+           expiresIn: process.env.ACCESS_TOKEN_EXPIRY, // ✅ Correct
+
         },
         {
             expiresIn: "1d",
@@ -95,7 +98,7 @@ userSchema.methods.generateRefreshToken = function(){
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: REFRESH_TOKEN_EXPIRY,
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
         },
     )
 };// this function is used to generate the refresh token
