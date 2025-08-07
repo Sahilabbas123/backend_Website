@@ -92,8 +92,6 @@ Postman:=>
 
 
 //
-logic building
+//pipelines
 
-some method
 
- 

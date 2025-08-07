@@ -257,7 +257,7 @@ const changeCurrentPassword = asyncHandler(async(req, res)=>{
 
     return res.status(200).
     json(
-        new(
+        new ApiResponse(
             200,
             "Password changed successfully"
         )
@@ -310,6 +310,8 @@ const updateAvatar = asyncHandler(async(req,res)=>{
    if(!avatar.url){
     throw new ApiError(400, "error while uploading on avatar")
    }
+   
+   //todo created a healper method in utils folder which will delete the old avatar after uploading new one
 
    const user = await User.findByIdAndUpdate(req.user?._id,
     {
