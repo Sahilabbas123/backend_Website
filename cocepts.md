@@ -94,4 +94,8 @@ Postman:=>
 //
 //pipelines
 
+//till date what have we covered in backend
+
+
+
 
